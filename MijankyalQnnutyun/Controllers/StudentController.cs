@@ -47,7 +47,7 @@ namespace MijankyalQnnutyun.Controllers
             return Ok();
         }
 
-        // DELETE
+        [HttpDelete]
         public async void DeletePerson(int id)
         {
             var personToDelete = await _context.Students.FirstOrDefaultAsync(p => p.Id == id);
