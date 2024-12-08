@@ -22,19 +22,20 @@ namespace MijankyalQnnutyun.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<Student> GetPersonById(int id)
+        public async Task<Student> GetById(int id)
         {
             return await _context.Students.FirstOrDefaultAsync(p => p.Id == id);
         }
 
         [HttpGet]
-        public async Task<List<Student>> GetAllPeople()
+        public async Task<IActionResult> GetAll()
         {
-            return await _context.Students.ToListAsync();
+            var res = await _context.Students.ToListAsync();
+            return Ok(res);
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdatePerson(Student student)
+        public async Task<IActionResult> Update(Student student)
         {
             var existingStudent = _context.Students.FirstOrDefault(p => p.Id == student.Id);
             if (existingStudent != null)
@@ -48,7 +49,7 @@ namespace MijankyalQnnutyun.Controllers
         }
 
         [HttpDelete]
-        public async void DeletePerson(int id)
+        public async void Delete(int id)
         {
             var personToDelete = await _context.Students.FirstOrDefaultAsync(p => p.Id == id);
             if (personToDelete != null)
