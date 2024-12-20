@@ -16,3 +16,7 @@ public partial class Student
 
     public virtual Learning? Learning { get; set; }
 }
+public class StudentsSeedDataSettings
+{
+    public List<Student> Students { get; set; }
+}

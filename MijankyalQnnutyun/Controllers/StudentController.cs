@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MijankyalQnnutyun.Dtos.Student;
 using MijankyalQnnutyun.Models;
 
 namespace MijankyalQnnutyun.Controllers
@@ -14,11 +15,12 @@ namespace MijankyalQnnutyun.Controllers
             _context = context;
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Student student)
+        public async Task<IActionResult> Create(CreateStudentRequest student)
         {
-            await _context.Students.AddAsync(student);
+            var studentModel = student.ToStudentFromCreateDto();
+            await _context.Students.AddAsync(studentModel);
             await _context.SaveChangesAsync();
-            return Ok();
+            return Ok(CreatedAtAction(nameof(GetById),new {id = studentModel.Id}, studentModel));
         }
 
         [HttpGet("{id}")]
