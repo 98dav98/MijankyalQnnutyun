@@ -28,12 +28,25 @@ namespace MijankyalQnnutyun.Controllers
         {
             return await _context.Students.FirstOrDefaultAsync(p => p.Id == id);
         }
+        [HttpGet("Search")]
+
+        public async Task<IActionResult> GetByFilter(DateOnly dateOfBirth, DateOnly yearOfEnrollment)
+        {
+            var res = await _context.Students.Where(x => x.DateOfBirth == dateOfBirth && x.YearOfEnrollment == yearOfEnrollment && x.Learning.Year > 2000).Select(i => i).ToListAsync();
+            return Ok(res);
+        }
+
+        [HttpGet("GetPagedData")]
+        public async Task<IActionResult> GetPagedData(int pageNumber, int pageSize)
+        {
+            var res = await _context.Students.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+            return Ok(res);
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var res = await _context.Students.ToListAsync();
-            return Ok(res);
+            return Ok(await _context.Students.ToListAsync());
         }
 
         [HttpPut]

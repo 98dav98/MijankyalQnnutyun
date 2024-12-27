@@ -14,3 +14,7 @@ public partial class Faculty
 
     public virtual Learning? Learning { get; set; }
 }
+public class FacultySeedDataSettings
+{
+    public List<Faculty> Faculties { get; set; }
+}

@@ -16,3 +16,7 @@ public partial class Learning
 
     public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }
+public class LearningSeedDataSettings
+{
+    public List<Learning> Learnings { get; set; }
+}
