@@ -16,10 +16,8 @@ namespace MijankyalQnnutyun.Models.Configurations
             entity.HasKey(e => e.Id).HasName("Students_pkey");
 
             entity.Property(e => e.Id).UseIdentityAlwaysColumn();
-            entity.Property(e => e.City).HasColumnType("char");
-            entity.Property(e => e.Nsf)
-                .HasColumnType("char")
-                .HasColumnName("NSF");
+            entity.Property(e => e.Nsf).HasColumnName("NSF");
+            entity.Property(e => e.TestColumn).HasColumnType("char");
 
             entity.HasOne(d => d.Learning).WithMany(p => p.Students)
                 .HasForeignKey(d => d.LearningId)

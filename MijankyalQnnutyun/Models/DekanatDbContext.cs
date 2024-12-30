@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 namespace MijankyalQnnutyun.Models;
 
 public partial class DekanatDbContext : DbContext

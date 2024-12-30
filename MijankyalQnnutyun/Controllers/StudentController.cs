@@ -35,6 +35,7 @@ namespace MijankyalQnnutyun.Controllers
             var res = await _context.Students.Where(x => x.DateOfBirth == dateOfBirth && x.YearOfEnrollment == yearOfEnrollment && x.Learning.Year > 2000).Select(i => i).ToListAsync();
             return Ok(res);
         }
+        
 
         [HttpGet("GetPagedData")]
         public async Task<IActionResult> GetPagedData(int pageNumber, int pageSize)
@@ -46,7 +47,7 @@ namespace MijankyalQnnutyun.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _context.Students.ToListAsync());
+            return Ok(await _context.Students.GroupBy(x => x.LearningId).ToListAsync());
         }
 
         [HttpPut]
