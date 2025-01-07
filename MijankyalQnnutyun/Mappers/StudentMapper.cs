@@ -1,7 +1,7 @@
 ﻿using MijankyalQnnutyun.Dtos.Student;
 using MijankyalQnnutyun.Models;
 
-namespace MijankyalQnnutyun
+namespace MijankyalQnnutyun.Mappers
 {
     public static class StudentMapper
     {

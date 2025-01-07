@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MijankyalQnnutyun.Dtos.Student;
+using MijankyalQnnutyun.Mappers;
 using MijankyalQnnutyun.Models;
 
 namespace MijankyalQnnutyun.Controllers
